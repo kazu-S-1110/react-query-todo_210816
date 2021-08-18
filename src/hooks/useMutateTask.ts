@@ -24,14 +24,14 @@ export const useMutateTask = () => {
             res.data, //第一引数がここに入っている
           ])
         }
-        dispatch(resetEditedTask)
+        dispatch(resetEditedTask())
       },
     }
   )
   const updateTaskMutation = useMutation(
     (task: EditTask) =>
       axios.put<Task>(
-        `${process.env.REACT_APP_REST_URL}/tasks/${task.id}`,
+        `${process.env.REACT_APP_REST_URL}/tasks/${task.id}/`,
         task
       ),
     {
@@ -50,12 +50,13 @@ export const useMutateTask = () => {
             )
           )
         }
+        dispatch(resetEditedTask())
       },
     }
   )
   const deleteTaskMutation = useMutation(
     (id: number) =>
-      axios.delete(`${process.env.REACT_APP_REST_URL}/tasks/${id}`),
+      axios.delete(`${process.env.REACT_APP_REST_URL}/tasks/${id}/`),
     {
       onSuccess: (res, variables) => {
         const previousTodos = queryClient.getQueryData<Task[]>('tasks')

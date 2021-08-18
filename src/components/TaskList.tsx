@@ -5,7 +5,7 @@ import { TaskItem } from './TaskItem'
 export const TaskList: VFC = () => {
   const { status, data } = useQueryTasks()
   console.log('TaskListがレンダリングされました')
-  if (status === 'loading') return <div>{'loading...'}</div>
+  if (status === 'loading') return <div>{'Loading...'}</div>
   if (status === 'error') return <div>{'Error'}</div>
 
   return (
