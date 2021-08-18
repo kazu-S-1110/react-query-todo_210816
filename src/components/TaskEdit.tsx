@@ -1,10 +1,10 @@
-import { VFC, FormEvent } from 'react'
+import { VFC, FormEvent, memo } from 'react'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { useMutateTask } from '../hooks/useMutateTask'
 import { useQueryTags } from '../hooks/useQueryTags'
 import { selectTask, setEditedTask } from '../slices/todoSlice'
 
-export const TaskEdit: VFC = () => {
+const TaskEdit: VFC = () => {
   const editedTask = useAppSelector(selectTask)
   const dispatch = useAppDispatch()
   const { status, data } = useQueryTags()
@@ -65,3 +65,5 @@ export const TaskEdit: VFC = () => {
     </div>
   )
 }
+
+export const TaskEditMemo = memo(TaskEdit)
