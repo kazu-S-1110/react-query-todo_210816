@@ -13,5 +13,6 @@ export const useQueryTasks = () => {
     queryKey: 'tasks',
     queryFn: getTasks,
     staleTime: 0,
+    // refetchInterval: 5000, //再度APIへ取得しに行くインターバルを指定することが可能
   })
 }
